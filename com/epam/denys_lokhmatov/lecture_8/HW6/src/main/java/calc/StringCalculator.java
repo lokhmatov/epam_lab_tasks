@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
+
+    private static final String DELIMETERS = "[,\\n]";
+
     public int add(String str) {
-        String[] numbers = str.split(",|\n");
+        String[] numbers = splitDelimeter(str);
         if (str.isEmpty()) {
             return 0;
         }
@@ -38,5 +41,27 @@ public class StringCalculator {
                 throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
             }
         }
+    }
+
+    private String[] splitDelimeter (String str) {
+        if (hasCustomDelimiter(str)) {
+            return str.substring(str.indexOf("\n") + 1)
+                      .split(extractDelimeter(str));
+        }
+        return str.split(DELIMETERS);
+    }
+
+    private String extractDelimeter(String str) {
+        String escapedNumber;
+        int startOfSubstring = str.indexOf("\n");
+        escapedNumber = str.substring(0, startOfSubstring)
+                .replace("//", "")
+                .replace("[", "")
+                .replace("]", "");
+        return escapedNumber;
+    }
+
+    private boolean hasCustomDelimiter(String numbers) {
+        return numbers.startsWith("/");
     }
 }

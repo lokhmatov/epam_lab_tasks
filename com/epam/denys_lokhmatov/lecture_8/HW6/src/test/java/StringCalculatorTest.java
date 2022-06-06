@@ -42,4 +42,9 @@ public class StringCalculatorTest {
     public void checkAndReturnNegativeNumbers() {
         stringCalculator.add("1,-2,4");
     }
+
+    @Test
+    public void returnSumWithDifferentDelimiters() {
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
+    }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/epam_lab_tasks.iml" filepath="$PROJECT_DIR$/.idea/epam_lab_tasks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com/epam/denys_lokhmatov/lecture_8/HW6/stringcalculator.iml" filepath="$PROJECT_DIR$/com/epam/denys_lokhmatov/lecture_8/HW6/stringcalculator.iml" />
+    </modules>
+  </component>
+</project>
