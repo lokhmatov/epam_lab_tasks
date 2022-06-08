@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration status="info">
+    <Properties>
+        <Property name="BASE_PATH">/Users/denis/Documents/epam_lab_tasks/com/epam/denys_lokhmatov/lecture_8/HW6/src/main/resources</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Property>
+        </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <LevelRangeFilter minLevel="INfO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <RollingFile name="ErrorLog" fileName="${BASE_PATH}/StringCalculatorErrors.log"
+                     filePattern="${BASE_PATH}/StringCalculatorErrors-%d{yyyy-MM-dd}-%i.log">
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile name="Log" fileName="${BASE_PATH}/StringCalculator.log"
+                     filePattern="${BASE_PATH}/StringCalculator-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="calc.StringCalculator" additivity="false" level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="ErrorLog"/>
+            <AppenderRef ref="Log"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>

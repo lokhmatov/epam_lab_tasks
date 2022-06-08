@@ -40,7 +40,7 @@ public class StringCalculatorTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void checkAndReturnNegativeNumbers() {
-        stringCalculator.add("1,-2,4");
+        stringCalculator.add("-1,-2,4");
     }
 
     @Test
